@@ -16,8 +16,8 @@ public class SignController {
     @Autowired
     private SignUpService service;
 
-    @PostMapping("sign-up")
+    @PostMapping("/api/sign-up")
     public void signUp(@RequestBody @Valid SignUpDTO req) {
-        service.create(new SignUpModel(req));
+        service.createSignUpService(new SignUpModel(req));
     }
 }

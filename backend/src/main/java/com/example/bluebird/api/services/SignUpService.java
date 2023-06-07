@@ -11,7 +11,7 @@ public class SignUpService {
     @Autowired
     private SignUpRepository repository;
 
-    public void create(SignUpModel data) {
+    public void createSignUpService(SignUpModel data) {
         repository.save(data);
     }
 }
