@@ -13,20 +13,24 @@ import com.example.bluebird.api.repository.TweetRepository;
 
 @Service
 public class TweetService {
-    private List<TweetModel> tweets = new ArrayList<>();
-
-
+    List<TweetModel> tweets = new ArrayList<>();
     @Autowired
     private TweetRepository repository;
 
     public List<TweetModel> getAllTweetsService() {
-        System.out.println(repository.findAll());
+        System.out.println(repository.findAll().size());
         return repository.findAll();
     }
 
-    // public Optional<TweetModel> getSpecifiedTweetsService(String username) {
-    //     return repository.findAllByUsername();
-    // }
+    public List<TweetModel> getSpecifiedTweetsService(String username) {
+        tweets.clear();
+        for (int i = 0; i <= repository.findAll().size() - 1; i++) {
+            if (repository.findAll().get(i).getUsername().equals(username)) {
+                tweets.add(repository.findAll().get(i));
+            }            
+        }
+        return tweets;
+    }
 
     public void createTweetService(TweetModel data) {
         repository.save(data);

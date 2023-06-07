@@ -28,10 +28,10 @@ public class TweetController {
     public List<TweetModel> getAllTweets() {
         return service.getAllTweetsService();
     }
-    // @GetMapping("/{username}")
-    // public Optional<TweetModel> getSpecifiedTweets(@PathVariable String username) {
-    //     return service.getSpecifiedTweetsService(username);
-    // }
+    @GetMapping("/{username}")
+    public List<TweetModel> getSpecifiedTweets(@PathVariable String username) {
+        return service.getSpecifiedTweetsService(username);
+    }
 
     @PostMapping
     public void create(@RequestBody @Valid TweetDTO req) {
