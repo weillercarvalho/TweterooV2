@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.example.bluebird.api.dto.SignUpDTO;
 import com.example.bluebird.api.models.SignUpModel;
 import com.example.bluebird.api.services.SignUpService;

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
+@Table(name = "Signup")
 public class SignUpModel {
 
     public SignUpModel(SignUpDTO data) {

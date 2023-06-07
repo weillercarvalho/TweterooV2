@@ -2,7 +2,13 @@ package com.example.bluebird.api.models;
 
 import com.example.bluebird.api.dto.TweetDTO;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Entity
+@NoArgsConstructor
+@Table(name = "tweets")
 public class TweetModel {
 
     public TweetModel(TweetDTO data) {

@@ -1,5 +1,6 @@
 package com.example.bluebird.api.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,13 @@ public class TweetController {
     private TweetService service;
 
     @GetMapping
-    public void getAllTweets() {
-
+    public List<TweetModel> getAllTweets() {
+        return service.getAllTweetsService();
     }
-    @GetMapping("/{id}")
-    public Optional<TweetModel> getSpecifiedTweets(@PathVariable Long id) {
-        return service.getSpecifiedTweetsService(id);
-    }
+    // @GetMapping("/{username}")
+    // public Optional<TweetModel> getSpecifiedTweets(@PathVariable String username) {
+    //     return service.getSpecifiedTweetsService(username);
+    // }
 
     @PostMapping
     public void create(@RequestBody @Valid TweetDTO req) {
