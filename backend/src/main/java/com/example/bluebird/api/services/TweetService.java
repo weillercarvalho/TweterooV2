@@ -17,9 +17,15 @@ public class TweetService {
     @Autowired
     private TweetRepository repository;
 
-    public List<TweetModel> getAllTweetsService() {
-        System.out.println(repository.findAll().size());
-        return repository.findAll();
+    public List<TweetModel> getAllTweetsService(int page) {
+        if (page <= 0) {
+            return repository.findAll();
+        } else {
+            List<TweetModel> paginationTweet = new ArrayList<>();
+            paginationTweet.addAll(repository.findAll().subList(repository.findAll().size() - page, repository.findAll().size() - 1));
+            return paginationTweet;
+        }
+        
     }
 
     public List<TweetModel> getSpecifiedTweetsService(String username) {
