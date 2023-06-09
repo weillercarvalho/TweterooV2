@@ -2,12 +2,11 @@ package com.example.bluebird.api.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.bluebird.api.error.ResourceNotFoundException;
+import com.example.bluebird.api.error.NotFoundException;
 import com.example.bluebird.api.models.TweetModel;
 import com.example.bluebird.api.repository.TweetRepository;
 
@@ -25,7 +24,7 @@ public class TweetService {
 
     public List<TweetModel> getPaginationTweetsService(int page) {
         if (page <= 0) {
-            throw new ResourceNotFoundException("Page integer invalid");
+            throw new NotFoundException("Page integer invalid");
         } else {
             List<TweetModel> paginationTweet = new ArrayList<>();
             paginationTweet.addAll(repository.findAll().subList(repository.findAll().size() - (page + 1), repository.findAll().size() - 1));

@@ -10,6 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "tweets")
 public class TweetModel {
+    
+    public TweetModel(int id, String username, String tweet) {
+        this.id = id;
+        this.username = username;
+        this.tweet = tweet;
+    }
+
 
     public TweetModel(TweetDTO data) {
         this.username = data.username();
@@ -17,7 +24,7 @@ public class TweetModel {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     @Column(length = 255, nullable = false)
     private String username;
     @Column(length = 255, nullable = false)

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.bluebird.api.models.TweetModel;
 
-public interface TweetRepository extends JpaRepository<TweetModel, Long> {
+public interface TweetRepository extends JpaRepository<TweetModel, Integer> {
     
 }
