@@ -26,8 +26,7 @@ public class TweetService {
         if (page <= 0) {
             throw new NotFoundException("Page integer invalid");
         } else {
-            List<TweetModel> paginationTweet = new ArrayList<>();
-            paginationTweet.addAll(repository.findAll().subList(repository.findAll().size() - (page + 1), repository.findAll().size() - 1));
+            List<TweetModel> paginationTweet = new ArrayList<>(repository.findAll().subList(repository.findAll().size() - (page + 1), repository.findAll().size() - 1));
             return paginationTweet;
         }
         
