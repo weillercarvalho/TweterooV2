@@ -30,6 +30,7 @@ public class TweetServiceTest {
     private TweetModel tweetModel;
     private List<TweetModel> listModel;
 
+    private NotFoundException notFound;
     List<TweetModel> tweets = new ArrayList<>();
 
     private static final Integer ID = 1;
@@ -65,12 +66,14 @@ public class TweetServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {0, 1})
-    void testGetPaginationTweetsService(int page) {
-
-        if (page <= 0) {
+    @ValueSource(ints = {0})
+    void testGetPaginationTweetsServiceErrorNotFound(int page) {
+            when(repository.findAll().subList(page, page)).thenThrow(new NotFoundException("Page integer invalid"));
             Assertions.assertThrows(NotFoundException.class, () -> service.getPaginationTweetsService(page));
-        } else {
+    }
+    @ParameterizedTest
+    @ValueSource(ints = {1})
+    void testGetPaginationTweetsServiceSucess(int page) {
             int totalSize = repository.findAll().size();
             int startIndex = totalSize - page;
             int endIndex = totalSize;
@@ -80,7 +83,6 @@ public class TweetServiceTest {
             }
             when(repository.findAll().subList(startIndex, endIndex)).thenReturn(listModel);
             Assertions.assertEquals(page, service.getPaginationTweetsService(page).size());
-        }
     }
 
     @Test
