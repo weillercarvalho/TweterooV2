@@ -28,7 +28,7 @@ public class SignUpServiceTest {
     private static final String username = "Weiller";
     private static final String avatar = "https://i.pinimg.com/originals/2a/92/06/2a9206a4a0d1d23cf92636c42115d054.jpg";
     @BeforeEach
-    void setup() {
+    void setUp() {
         MockitoAnnotations.openMocks(this);
         startSignUp();
     }

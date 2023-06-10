@@ -39,7 +39,7 @@ public class TweetServiceTest {
     private static final int pageValid = 3;
 
     @BeforeEach
-    void setup() {
+    void setUp() {
         MockitoAnnotations.openMocks(this);
         startTweet();
     }
