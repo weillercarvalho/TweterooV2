@@ -73,7 +73,7 @@ public class TweetServiceTest {
     }
     @ParameterizedTest
     @ValueSource(ints = {1})
-    void testGetPaginationTweetsServiceSucess(int page) {
+    void testGetPaginationTweetsServiceSuccess(int page) {
             int totalSize = repository.findAll().size();
             int startIndex = totalSize - page;
             int endIndex = totalSize;
