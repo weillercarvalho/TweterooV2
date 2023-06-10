@@ -42,7 +42,7 @@ public class TweetService {
         return tweets;
     }
 
-    public void createTweetService(TweetModel data) {
-        repository.save(data);
+    public TweetModel createTweetService(TweetModel data) {
+        return repository.save(data);
     }
 }

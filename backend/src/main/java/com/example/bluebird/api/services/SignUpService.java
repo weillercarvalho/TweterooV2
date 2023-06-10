@@ -1,6 +1,7 @@
 package com.example.bluebird.api.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.bluebird.api.models.SignUpModel;
@@ -11,7 +12,7 @@ public class SignUpService {
     @Autowired
     private SignUpRepository repository;
 
-    public void createSignUpService(SignUpModel data) {
-        repository.save(data);
+    public SignUpModel createSignUpService(SignUpModel data) {
+        return repository.save(data);
     }
 }

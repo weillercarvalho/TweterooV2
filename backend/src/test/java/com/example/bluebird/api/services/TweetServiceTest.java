@@ -1,7 +1,6 @@
 package com.example.bluebird.api.services;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.example.bluebird.api.error.NotFoundException;
@@ -31,6 +30,8 @@ public class TweetServiceTest {
     private TweetModel tweetModel;
     private List<TweetModel> listModel;
 
+    List<TweetModel> tweets = new ArrayList<>();
+
     private static final Integer ID = 1;
     private static final String username = "Weiller";
     private static final String tweet = "First tweet";
@@ -46,7 +47,10 @@ public class TweetServiceTest {
 
     @Test
     void testCreateTweetService() {
-
+     when(repository.save(Mockito.any())).thenReturn(tweetModel);
+     TweetModel response = service.createTweetService(tweetModel);
+     assertNotNull(response);
+     assertEquals(TweetModel.class, response.getClass());
     }
 
     @Test
@@ -57,6 +61,7 @@ public class TweetServiceTest {
         assertNotNull(response);
         assertEquals(listModel, response);
         assertEquals(ID, responseone.getId());
+        assertEquals(TweetModel.class, responseone.getClass());
     }
 
     @ParameterizedTest
@@ -80,6 +85,12 @@ public class TweetServiceTest {
 
     @Test
     void testGetSpecifiedTweetsService() {
+        when(repository.findAll()).thenReturn(tweets);
+        tweets.add(tweetModel);
+        List<TweetModel> response = service.getSpecifiedTweetsService(username);
+        assertEquals(tweets.getClass(),response.getClass());
+        assertNotNull(response);
+        assertEquals(tweets.get(0).getUsername(), response.get(0).getUsername());
 
     }
 
